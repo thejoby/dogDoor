@@ -23,9 +23,9 @@ def cakes():
 
 @app.route('/open')
 def open():
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
-    p = GPIO.PWM(18, 50)
+    p = GPIO.PWM(18, 100)
     p.start(0)
     p.ChangeDutyCycle(4)
     #servo = PWM.Servo()
@@ -45,10 +45,10 @@ def close():
     #servo.stop_servo(18)
 
     #https://rpi.science.uoit.ca/lab/servo/
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
     #GPIO.PWM(PIN, frequency in Hz)
-    p = GPIO.PWM(18, 50)
+    p = GPIO.PWM(18, 100)
     #p.start(duty_cycle)
     #The duty cycle describes the proportion of on time 
     # to the regular interval or period of time.
