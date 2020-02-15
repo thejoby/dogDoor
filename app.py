@@ -32,6 +32,8 @@ def open():
     #servo.stop_servo(18)
     p.stop()
     GPIO.cleanup()
+    return 'Dog Door Open!'
+
 
 @app.route('/close')
 def close():
@@ -52,6 +54,7 @@ def close():
     time.sleep(2)
     p.stop()
     GPIO.cleanup()
+    return 'Dog Door Closed!'
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
