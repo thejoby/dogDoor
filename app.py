@@ -2,6 +2,7 @@ from flask import Flask
 
 #from Tkinter import *
 import time
+import datetime
 #from RPIO import PWM
 import RPi.GPIO as GPIO
 import sys
@@ -11,7 +12,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Flask app is running!'
+    now = datetime.datetime.now()
+    return 'Flask app is running at: %s' % (now)
 
 
 @app.route('/cakes')
