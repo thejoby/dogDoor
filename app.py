@@ -26,8 +26,8 @@ def open():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(18, GPIO.OUT)
     p = GPIO.PWM(18, 50)
-    p.start(4)
-
+    p.start(0)
+    p.ChangeDutyCycle(4)
     #servo = PWM.Servo()
     #servo.set_servo(18, 1800)
     time.sleep(2)
@@ -53,6 +53,7 @@ def close():
     #The duty cycle describes the proportion of on time 
     # to the regular interval or period of time.
     p.start(10)
+    p.ChangeDutyCycle(11)
     time.sleep(2)
     p.stop()
     GPIO.cleanup()
