@@ -1,9 +1,7 @@
 from flask import Flask
 
-#from Tkinter import *
 import time
 import datetime
-#from RPIO import PWM
 import RPi.GPIO as GPIO
 import sys
 
@@ -16,35 +14,22 @@ def index():
     return 'Flask app is running at: %s' % (now)
 
 
-@app.route('/cakes')
-def cakes():
-    return 'Yummy cakes!'
-
-
-@app.route('/open')
+@app.route('/open', methods=['POST'])
 def open():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
     p = GPIO.PWM(18, 100)
-    p.start(0)
-    p.ChangeDutyCycle(4)
-    #servo = PWM.Servo()
-    #servo.set_servo(18, 1800)
-    time.sleep(2)
-    #servo.stop_servo(18)
+    p.start(17.5)
+
+    time.sleep(1.2)
+
     p.stop()
     GPIO.cleanup()
     return 'Dog Door Open!'
 
 
-@app.route('/close')
+@app.route('/close', methods=['POST'])
 def close():
-    #servo = PWM.Servo()
-    #servo.set_servo(18, 810)
-    #time.sleep(1.5)
-    #servo.stop_servo(18)
-
-    #https://rpi.science.uoit.ca/lab/servo/
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
     #GPIO.PWM(PIN, frequency in Hz)
@@ -52,9 +37,9 @@ def close():
     #p.start(duty_cycle)
     #The duty cycle describes the proportion of on time 
     # to the regular interval or period of time.
-    p.start(10)
-    p.ChangeDutyCycle(11)
-    time.sleep(2)
+    p.start(7)
+    
+    time.sleep(1)
     p.stop()
     GPIO.cleanup()
     return 'Dog Door Closed!'
