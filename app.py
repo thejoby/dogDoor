@@ -28,7 +28,7 @@ def open():
 
         p.stop()
         GPIO.cleanup()
-        return 'Dog Door Open!'`
+        return 'Dog Door Open!'
 
 
 @app.route('/close', methods=['GET','POST'])
